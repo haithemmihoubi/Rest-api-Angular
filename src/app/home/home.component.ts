@@ -11,10 +11,13 @@ import {Subscription} from "rxjs";
 export class HomeComponent implements OnInit, OnDestroy {
   dataArray: any
   dataObservable: Subscription
-
+  id = 2
+dataOneObservable:Subscription
   constructor(private share: ShareServiceService, private http: HttpClient) {
     //Subscribe to the API to fetch data from the current url in getAllPosts
     this.dataObservable = this.share.getAllPosts().subscribe((data: any) => this.dataArray = data)
+
+    this.dataOneObservable= this.share.getOnePost(2).subscribe(data => console.log(data));
 
 
   }
@@ -24,6 +27,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.dataObservable.unsubscribe()
+    this.dataOneObservable.unsubscribe()
   }
 
 }

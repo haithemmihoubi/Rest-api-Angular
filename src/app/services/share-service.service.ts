@@ -15,5 +15,8 @@ export class ShareServiceService {
   getAllPosts() {
     return this.http.get('https://jsonplaceholder.typicode.com/posts')
   }
+ getOnePost(id:any) {
+    return this.http.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+  }
 
 }
